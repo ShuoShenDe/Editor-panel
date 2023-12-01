@@ -84,6 +84,7 @@ function ExamplePanel({ context }: { context: PanelExtensionContext }): JSX.Elem
     // subscribe to some topics, you could do this within other effects, based on input fields, etc
     // Once you subscribe to topics, currentFrame will contain message events from those topics (assuming there are messages).
     context.subscribe([{ topic: "/ld_object_lists" }]);
+    console.log(topics);
   }, [context]);
 
   useEffect(() => {
@@ -178,23 +179,7 @@ function ExamplePanel({ context }: { context: PanelExtensionContext }): JSX.Elem
 
   return (
     <div style={{ padding: "1rem" }}>
-      <h2>Welcome to your new extension panel!</h2>
-      <p>
-        Check the{" "}
-        <a href="https://foxglove.dev/docs/studio/extensions/getting-started">documentation</a> for
-        more details on building extension panels for Foxglove Studio.
-      </p>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", rowGap: "0.2rem" }}>
-        <b style={{ borderBottom: "1px solid" }}>Topic</b>
-        <b style={{ borderBottom: "1px solid" }}>Datatype</b>
-        {(topics ?? []).map((topic) => (
-          <>
-            <div key={topic.name}>{topic.name}</div>
-            <div key={topic.datatype}>{topic.datatype}</div>
-          </>
-        ))}
-      </div>
-      <div>{messages?.length}</div>
+      <h2>Here is the Editor panel</h2>
       {/* Add a container for the WebGLRenderer */}
       <div id="renderer-container" style={{ width: "100%", height: "500px" }}></div>
     </div>
